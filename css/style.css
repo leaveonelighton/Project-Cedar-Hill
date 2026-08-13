@@ -1,6 +1,6 @@
 /* =========================================
    LEAVE ONE LIGHT ON
-   Website V3 - Main Stylesheet
+   Website V3.1 - Main Stylesheet
 ========================================= */
 
 * {
@@ -21,15 +21,32 @@
     --gold-antique: #A87316;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Lato', sans-serif;
     background: var(--navy);
     color: var(--ivory);
     line-height: 1.7;
+    overflow-wrap: break-word;
 }
 
 a {
     text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--gold-champagne);
+    outline-offset: 4px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 ul {
@@ -76,8 +93,16 @@ ul {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     .shimmer {
         animation: none;
+    }
+
+    *, *::before, *::after {
+        transition-duration: .01ms !important;
     }
 }
 
@@ -160,6 +185,10 @@ nav a:focus-visible {
     background:
         radial-gradient(circle at 50% 42%, rgba(243,215,122,.08), transparent 26%),
         var(--navy);
+}
+
+.compact-hero {
+    min-height: 76vh;
 }
 
 .overlay {
@@ -395,6 +424,13 @@ nav a:focus-visible {
     justify-content: center;
 }
 
+.house-image img {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.24);
+}
+
 .placeholder {
     width: 450px;
     max-width: 100%;
@@ -434,6 +470,12 @@ nav a:focus-visible {
 .book-image {
     display: flex;
     justify-content: center;
+}
+
+.book-image img {
+    width: min(100%, 380px);
+    border-radius: 10px;
+    box-shadow: 0 22px 55px rgba(36,54,77,.22);
 }
 
 .light-placeholder {
@@ -577,6 +619,19 @@ nav a:focus-visible {
     color: #fff;
 }
 
+.hosting-note {
+    margin-top: 22px;
+    max-width: 340px;
+    font-size: .84rem;
+    line-height: 1.55 !important;
+    color: rgba(255,255,255,.72) !important;
+}
+
+.hosting-note a,
+.hosting-note a:visited {
+    color: var(--gold-bright);
+}
+
 .footer-bottom {
     text-align: center;
     border-top: 1px solid rgba(255,255,255,.15);
@@ -612,7 +667,8 @@ nav a:focus-visible {
         gap: 18px 24px;
     }
 
-    .hero {
+    .hero,
+    .compact-hero {
         min-height: auto;
         padding-top: 100px;
     }
@@ -626,12 +682,25 @@ nav a:focus-visible {
         gap: 50px;
     }
 
+    .gormans-image,
+    .gormans-content,
+    .house-content,
+    .house-image,
+    .book-image,
+    .book-content {
+        width: 100%;
+    }
+
     .logo-title {
         font-size: 2rem;
     }
 
     .logo-tagline {
         letter-spacing: 1.8px;
+    }
+
+    .footer .container {
+        gap: 42px;
     }
 }
 
@@ -640,12 +709,32 @@ nav a:focus-visible {
         padding: 22px 20px;
     }
 
+    nav {
+        gap: 22px;
+    }
+
     nav ul {
-        gap: 12px 18px;
+        width: 100%;
+        gap: 10px 14px;
+    }
+
+    nav li {
+        display: flex;
     }
 
     nav a {
-        font-size: .94rem;
+        font-size: .96rem;
+        padding: 6px 0;
+    }
+
+    .logo-title {
+        font-size: 1.75rem;
+    }
+
+    .logo-tagline {
+        font-size: .68rem;
+        line-height: 1.45;
+        letter-spacing: 1.35px;
     }
 
     .hero,
@@ -658,12 +747,107 @@ nav a:focus-visible {
         padding-right: 22px;
     }
 
+    .hero {
+        padding-top: 78px;
+        padding-bottom: 72px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.75rem, 14vw, 4rem);
+        line-height: 1.08;
+        margin-bottom: 22px;
+    }
+
+    .hero h2 {
+        font-size: 1.35rem;
+        line-height: 1.35;
+        margin-bottom: 26px;
+    }
+
+    .eyebrow {
+        font-size: .9rem;
+        line-height: 1.55;
+    }
+
+    .intro,
+    .story-intro-content p,
+    .gormans-content p,
+    .house-content p,
+    .book-content p,
+    .movement p {
+        font-size: 1.08rem;
+    }
+
+    .story-intro-content h2,
+    .gormans-content h2,
+    .book-content h2,
+    .house-content h2,
+    .movement h2 {
+        font-size: clamp(2.25rem, 11vw, 3rem);
+    }
+
+    .story-intro-content h3 {
+        font-size: 1.55rem;
+    }
+
+    .story-intro-content .highlight {
+        font-size: 1.9rem;
+    }
+
+    .section-tag {
+        letter-spacing: 2px;
+        line-height: 1.5;
+    }
+
+    .buttons {
+        margin-top: 32px;
+    }
+
     .button {
         width: 100%;
         max-width: 330px;
+        margin: 7px auto;
+        padding: 15px 22px;
+    }
+
+    .placeholder {
+        min-height: 230px;
+        font-size: 1.12rem;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .status-note {
+        padding: 48px 20px;
     }
 
     .status-card {
         padding: 28px 24px;
+    }
+
+    .footer {
+        padding: 56px 22px 28px;
+    }
+
+    .footer-brand,
+    .footer-links,
+    .footer-contact {
+        min-width: 0;
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    .footer h3 {
+        font-size: 1.8rem;
+    }
+
+    .footer p,
+    .footer li {
+        font-size: .98rem;
+    }
+
+    .hosting-note {
+        max-width: none;
+        font-size: .82rem !important;
     }
 }
